@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply overflow-x-hidden font-poppin;
+    }
+
+    .transitions {
+        @apply transition-all duration-300 ease-in-out;
+    }
+}
