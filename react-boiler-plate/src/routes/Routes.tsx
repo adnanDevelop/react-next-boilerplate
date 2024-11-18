@@ -1,13 +1,16 @@
 import { Outlet, useRoutes } from "react-router-dom";
-import { ProtectedRoute, PublicRoute } from "../utils/RouteAuth";
+import { ProtectedRoute, PublicRoute } from "../utils/RootAuth";
 
 // Main Layout
 import Layout from "../components/layout/Layout";
 
-// Public Routes
-
 // Protected Routes
+import Home from "../modules/home";
 
+// Public Routes
+import Login from "../modules/auth/login/Login";
+import NotFound from "../modules/notFound/NotFound";
+import Register from "../modules/auth/register/Register";
 export const Routes = () => {
   return useRoutes([
     {
@@ -18,11 +21,10 @@ export const Routes = () => {
         </ProtectedRoute>
       ),
       children: [
-        // {
-        //   index: true,
-        //   element: <Home />,
-        // },
-       
+        {
+          index: true,
+          element: <Home />,
+        },
       ],
     },
     {
@@ -32,15 +34,19 @@ export const Routes = () => {
         </PublicRoute>
       ),
       children: [
-        // {
-        //   path: "login",
-        //   element: <Login />,
-        // },
+        {
+          path: "login",
+          element: <Login />,
+        },
+        {
+          path: "register",
+          element: <Register />,
+        },
       ],
     },
-    // {
-    //   path: "*",
-    //   element: <NotFound />,
-    // },
+    {
+      path: "*",
+      element: <NotFound />,
+    },
   ]);
 };
